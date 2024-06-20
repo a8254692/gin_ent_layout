@@ -1,0 +1,83 @@
+log_level:
+log_dir: ./log
+log_prefix: merchant
+log_stderr: true 
+
+# 分区ID: [1000, 2000)=小游戏, [0 ,1000)=红幺鸡, 默认值: 0
+part_id: 0
+
+rpc_addr: 127.0.0.1
+rpc_port: 36482
+health_port: 36404
+rpc_server_name: merchant
+
+#rpc路由方式: poll=轮训, standby=分组主备, hash=哈希, lb=负载均衡, specify=指定[默认:poll].
+rpc_router: poll
+#msg路由方式: poll=轮训, standby=分组主备, hash=哈希, lb=负载均衡, specify=指定[默认:poll].
+msg_router: poll
+#分组主备[standby]的分组总数.其他模式，此参数无效.例如:gold开5组，每组2个进程（一主一备）,共10个进程
+#hash_sum: 5
+#RPC服务组名
+#group_name: 1000,1001
+
+# redis 
+addr: 192.168.1.22:6379
+passwd: rdD1azaiErffCtiB6FnV6RzEiDUseDv
+
+redis_list:
+  player:
+    addr: 192.168.1.22:6379
+    passwd: rdD1azaiErffCtiB6FnV6RzEiDUseDv
+  room:
+    addr: 192.168.1.22:6379
+    passwd: rdD1azaiErffCtiB6FnV6RzEiDUseDv
+  merchant:
+    addr: 192.168.1.22:6379
+    passwd: rdD1azaiErffCtiB6FnV6RzEiDUseDv
+    db: 9
+# mysql 数据库列表
+mysql_list:
+  player:
+    user: back
+    passwd: back789456123
+    addr: 192.168.1.15:3306
+    db: db_player
+    params:
+      charset: utf8mb4
+  config:
+    user: back
+    passwd: back789456123
+    addr: 192.168.1.15:3306
+    db: db_config
+    params:
+      charset: utf8
+  log:
+    user: back
+    passwd: back789456123
+    addr: 192.168.1.15:3306
+    db: db_log
+    params:
+      charset: utf8mb4
+  merchant:
+    user: back
+    passwd: Back_789456123
+    addr: 192.168.1.22:3306
+    db: merchant
+    params:
+      charset: utf8mb4
+
+         
+# nsq 
+nsqd_addr: 127.0.0.1:4150
+nsqlookupd_addrs: 
+  - 127.0.0.1:4161
+
+# consul 
+consul_addr: 127.0.0.1:8500
+
+node: 1
+
+
+# jaeger配置
+open_jaeger: false
+jaeger_addr: http://192.168.7.108:14268/api/traces

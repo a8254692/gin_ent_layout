@@ -1,0 +1,5 @@
+go_build_back_end_merchant
+log
+__debug_bin*
+merchant.exe
+back/back.7z
